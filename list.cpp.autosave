@@ -1,26 +1,34 @@
-#include <iostream>  
+#include <iostream>
 #include <fstream>
 using namespace std;
-
-int main(int ac, char *av[]) { 
- char * name , * name1 ;
- if(ac>1){
-     name =av[1];
-     name1=av[2];
- }
- else{
-     cout<<"Не заданы имена файлов"<<endl;
-     return(1);
-     }
-ifstream f(name);
-char a;
-while(!f.eof()){
-    while(a!=" " ){
-        f>>a;
-            for(int i=0;i<20;i++){
-           if(c==a[i]){
-        }
-            else {
-               break
+int main(int ac, char *av[]){
+  char *name,*name1;
+  if (ac > 1) {
+    name = av[1];
+    name1 =av[2];
+  }
+  else {
+    cout<<"РќРµ Р·Р°РґР°РЅС‹ РёРјРµРЅР° С„Р°Р№Р»РѕРІ\n";
+    return 1;
+  }
+  ifstream f(name);
+  string a;
+  ofstream f1(name1);
+  while (!f.eof()){
+    f>>a;
+    int n=a.length();
+    int c=1;
+    for (int i=0;i<n/2;i++){
+      if (a[i]!=a[n-1-i]){
+        c=0;
+        break;
+      }
     }
+    if (c==1){
+      f1<<a<<" ";
+    }
+  }
+  f.close();
+  f1.close();
 }
+
